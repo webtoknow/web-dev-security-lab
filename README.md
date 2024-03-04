@@ -36,7 +36,7 @@ created by [Björn Kimminich](http://kimminich.de) and modified by [Bogdan Mihai
 
 7. [Insecure Dependencies & Configuration](slides/01-07-insecure_dependencies_and_configuration.md)
 
-   This lecture examines Insecure Dependencies and Configuration, a critical security issue in software development. It emphasizes the need for secure dependencies and configurations, common oversights, and their potential repercussions. Exercises include identifying and exploiting these flaws in Jucei shop safe context.
+   This lecture examines Insecure Dependencies and Configuration, a critical security issue in software development. It emphasizes the need for secure dependencies and configurations, common oversights, and their potential repercussions. Exercises include identifying and exploiting these flaws in Juice shop safe context.
 
 8. [Software & Data Integrity Failures](slides/01-08-integrity_failures.md)
 
