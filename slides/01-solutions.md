@@ -1,116 +1,113 @@
 <!-- theme: default -->
 <!-- paginate: true -->
-<!-- footer: Copyright (c) by **Bjoern Kimminich** | Licensed under [CC-BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) -->
+<!-- footer: Copyright (c) by **Bogdan Mihai Nicolae** | Licensed under [CC-BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) -->
 # Solutions
 
-## Exercises 1st Semester
+## Exercises
 
 ---
 
-# Exercise 1.1 (Attacker Stereotypes)
+# Exercise 3.1 (Authentication Bypass)
 
-| Name                | Characteristics / Motivation                                                 | Danger                  |
-|:--------------------|:-----------------------------------------------------------------------------|:------------------------|
-| **Script Kiddie**   | Bragging rights & wreaking havoc                                             | :skull:                 |
-| **Hacktivists**     | (Pseudo-)political & social goals                                            | :skull::skull:          |
-| **Competitors**     | Defamation & industrial espionage                                            | :skull::skull:          |
-| **Organized Crime** | Monetization, e.g. extortion & fraud<br>(Providing Cyber-Crime-as-a-Service) | :skull::skull:(:skull:) |
-| **Evil Employees**  | Revenge & corruption<br>Dangerous insider knowledge                          | :skull::skull::skull:   |
-| **Nation States**   | Power! Unlimited resources & budget                                          | :skull:x100             |
+| # | Username | Password       | Created SQL Query                                                         | Query Result |
+|:--|:---------|:---------------|:--------------------------------------------------------------------------|:-------------|
+| 1 | `horst`  | `n0Rd4kAD3m!E` | `SELECT id FROM users WHERE name = 'horst' AND password = 'n0Rd4kAD3m!E'` | `42`         |
+| 2 | `'`      | `qwertz`       | `SELECT id FROM users WHERE name = ''' AND password = 'qwertz'`           | `Error`      |
+| 3 | `'--`    | `abc123`       | `SELECT id FROM users WHERE name = ''-- AND password = 'abc123'`          | `null`       |
 
 ---
 
-# Exercise 2.1 (Threats to Security Goals)
-
-| Threat                      | C                  | I                  | A                  |
-|:----------------------------|:-------------------|:-------------------|:-------------------|
-| Network Sniffing            | :heavy_check_mark: |                    |                    |
-| DDoS Attack                 |                    |                    | :heavy_check_mark: |
-| Rogue WiFi Access Point     | :heavy_check_mark: | :heavy_check_mark: |(:heavy_check_mark:)|
-| Electromagnetic Pulse (EMP) |                    |(:heavy_check_mark:)| :heavy_check_mark: |
-| Whistleblower               | :heavy_check_mark: |                    |                    |
-| Social Engineering          | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| # | Username     | Password     | Created SQL Query                                                     | Query Result  |
+|:--|:-------------|:-------------|:----------------------------------------------------------------------|:--------------|
+| 4 | `horst'--`   | `qwertz`     | `SELECT id FROM users WHERE name = 'horst'-- AND password = 'qwertz'` | `42`          |
+| 5 | `admin'--`   | `<anything>` | `SELECT id FROM users WHERE name = 'admin'`                           | `1`           |
+| 6 | `' OR 1=1--` | `<anything>` | `SELECT id FROM users`                                                | `1`, `2`, ... |
 
 ---
 
-### Exercise 2.3 (CIA³ Measures)
+# Exercise 6.1 (Info. Classification)
 
-| Security Goal   | Technical Measures                                                                                                            | Organizational Measures                                                  |
-|:----------------|:------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------|
-| Confidentiality | e.g. AES/RSA, HTTPS, [Tor](https://www.torproject.org/), 2FA                                                                  | e.g. Anonymous Payment Systems, Access Restrictions, Data Classification |
-| Integrity       | e.g. SHA2, HSTS, MACs, PGP/GPG, Blockchain                                                                                    | e.g. Version Control, Access Logs                                        |
-| Availability    | e.g. Load Balancer, [Circuit Breaker Pattern](https://martinfowler.com/bliki/CircuitBreaker.html), Heartbeat Monitoring, RAID | e.g. 24/7 Support, On-Call-Duty, SLAs                                    |
-
----
-
-| Security Goal  | Technical Measures         | Organizational Measures                                                      |
-|:---------------|:---------------------------|:-----------------------------------------------------------------------------|
-| Accountability | :interrobang:              | e.g. Security Policies, Risk Assessments, RACI Matrix, Segregation of Duties |
-| Assurance      | e.g. Vulnerability Scanner | e.g. KPIs, Customer/Supplier Audits, Penetration Test, Red Team              |
+| Practice            | Public             | Internal           | Confidential                                | Secret                                                      |
+|:--------------------|:-------------------|:-------------------|:--------------------------------------------|:------------------------------------------------------------|
+| Publish on Internet | :heavy_check_mark: | :x:                | :x:                                         | :x:                                                         |
+| Publish on Intranet | :heavy_check_mark: | :heavy_check_mark: | :x:                                         | :x:                                                         |
+| Print on :printer:  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: if picked up immediately | :heavy_check_mark: on personal or otherwise secured printer |
 
 ---
 
-### Exercise 3.1 (JavaScript Payload)
+| Practice                 | Public             | Internal                    | Confidential                                    | Secret                                          |
+|:-------------------------|:-------------------|:----------------------------|:------------------------------------------------|:------------------------------------------------|
+| Share with third parties | :heavy_check_mark: | :heavy_check_mark: with NDA | :heavy_check_mark: with NDA + permission        | :heavy_check_mark: with NDA + permission        |
+| Copy to USB key          | :heavy_check_mark: | :heavy_check_mark:          | :heavy_check_mark: with encryption + permission | :heavy_check_mark: with encryption + permission |
 
-1. Default Internet browser is opened (as it is probably bound to open
-   `.html` files on most computers)
-2. The JavaScript is executed resulting in the effective code
-   `document["location"]=http://enjoyyourhaircut.com/5.html;` being run
-3. The browser is redirected to <http://enjoyyourhaircut.com/5.html>
-   (which does not exist any more)
-
----
-
-![Relevant code sections of the JavaScript virus](images/01-03-malware/enjoy-your-haircut.png)
-
-_:information_source: Only the yellow code sections are relevant as the
-payload. The rest is merely obfuscation to prevent detection by AV
-software!_
+:warning: _Many organizations do not allow the use of USB keys **in
+general**. This kind of restriction would obviously **overrule** any of
+the above "Copy to USB" assessments with :x:._
 
 ---
 
-### Exercise 7.1 (Attack Tree: Access Office Building)
+# Exercise 6.2 (Data Lifecycle Phases)
 
-```md
-1. Go through a door
-  a. When it’s unlocked:
-    i. Get lucky.
-    ii. Obstruct the latch plate (the “Watergate Classic”).
-    iii. Distract the person who locks the door at night.
-  b. Drill the lock.
-  c. Pick the lock.
-  d. Use the key.
-    i. Find a key.
-    ii. Steal a key.
-    iii. Photograph and reproduce the key.
-    iv. Social engineer a key from someone.
-      1. Borrow the key.
-      2. Convince someone to post a photo of their key ring.
-  e. Social engineer your way in.
-    i. Act like you’re authorized and follow someone in.
-    ii. Make friends with an authorized person.
-    iii. Carry a box, a cup of coffee in each hand, etc.
+| Phase                       | Internal                                                             | Confidential                                                             | Secret                                                                                                         |
+|:----------------------------|:---------------------------------------------------------------------|:-------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------|
+| Permanent storage           | <small>:red_circle: Access Control (against external access)</small> | <small>:red_circle: Access Control<br>:o:Access logs, Encryption</small> | <small>:red_circle: Access Control, Access logs, Encryption</small>                                            |
+| Transfer (internal network) | <small>No restrictions</small>                                       | <small>:o: Encryption (e.g. TLS)</small>                                 | <small>:red_circle: Encryption (e.g. TLS)<br>:o:/:red_circle: End-to-end encryption (e.g. PGP, Signal)</small> |
+
+---
+
+| Phase                     | Internal                                 | Confidential                                                      | Secret                                                                                                                             |
+|:--------------------------|:-----------------------------------------|:------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------|
+| Transfer (public network) | <small>:o: Encryption (e.g. VPN)</small> | <small>:o: Encryption (e.g. VPN, TLS)</small>                     | <small>:red_circle: Encryption (e.g. VPN, TLS)<br>:o:/:red_circle: End-to-end encryption (e.g. PGP, Signal)</small>                |
+| Disposal                  | <small>No restrictions</small>           | <small>:red_circle: Shredding, secure deletion, data wipe</small> | <small>:red_circle: Shredding, secure deletion, data wipe<br>:o:/:red_circle: Destroy medium physically (:hammer:, :fire:)</small> |
+
+:information_source: _For "Public" data no restrictions for any
+lifecycle phases apply._
+
+---
+
+# Exercise 8.2 (ArrayList Deserialization)
+
+```java
+/**
+ * The maximum size of array to allocate.
+ * Some VMs reserve some header words in an array.
+ * Attempts to allocate larger arrays may result in
+ * OutOfMemoryError: Requested array size exceeds VM limit
+ */
+private static final int MAX_ARRAY_SIZE = Integer.MAX_VALUE - 8;
 ```
 
+_:boom: Whenever an `OutOfMemoryError` occurs, the affected JVM
+crashes._
+
 ---
 
-<!-- _footer: Shostack, A. (2014) Threat Modeling: Designing for Security, Wiley -->
-```md
-2. Go through a window.
-  a. Break a window.
-  b. Lift the window.
-3. Go through a wall.
-  a. Use a sledgehammer or axe.
-  b. Use a truck to go through the wall.
-4. Gain access via other means.
-  a. Use a fi re escape.
-  b. Use roof access from a helicopter (preferably black) or adjacent
-     building.
-  c. Enter another part of the building, using another tenant’s access.
+# Exercise 8.3 (HashSet Deserialization)
+
+```java
+i=0, root=[[], [foo]]
+i=1, root=[[[], [foo]], [[], foo, [foo]]]
+i=2, root=[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]]
+i=3, root=[[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]]
+i=4, root=[[[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]], [[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], foo, [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]]]
+i=5, root=[[[[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]], [[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], foo, [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]]], [[[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]], foo, [[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], foo, [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]]]]
+i=6, root=[[[[[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]], [[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], foo, [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]]], [[[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]], foo, [[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], foo, [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]]]], [[[[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]], [[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], foo, [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]]], foo, [[[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]], foo, [[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], foo, [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]]]]]
+i=7, root=[[[[[[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]], [[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], foo, [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]]], [[[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]], foo, [[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], foo, [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]]]], [[[[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]], [[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], foo, [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]]], foo, [[[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]], foo, [[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], foo, [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]]]]], [[[[[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]], [[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], foo, [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]]], [[[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]], foo, [[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], foo, [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]]]], foo, [[[[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]], [[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], foo, [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]]], foo, [[[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]], foo, [[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], foo, [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]]]]]]
+i=8, root=[[[[[[[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]], [[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], foo, [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]]], [[[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]], foo, [[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], foo, [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]]]], [[[[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]], [[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], foo, [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]]], foo, [[[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]], foo, [[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], foo, [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]]]]], [[[[[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]], [[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], foo, [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]]], [[[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]], foo, [[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], foo, [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]]]], foo, [[[[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]], [[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], foo, [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]]], foo, [[[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]], foo, [[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], foo, [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]]]]]], [[[[[[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]], [[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], foo, [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]]], [[[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]], foo, [[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], foo, [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]]]], [[[[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]], [[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], foo, [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]]], foo, [[[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]], foo, [[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], foo, [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]]]]], foo, [[[[[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]], [[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], foo, [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]]], [[[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]], foo, [[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], foo, [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]]]], foo, [[[[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]], [[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], foo, [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]]], foo, [[[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]], foo, [[[[[], [foo]], [[], foo, [foo]]], [[[], [foo]], foo, [[], foo, [foo]]]], foo, [[[[], [foo]], [[], foo, [foo]]], foo, [[[], [foo]], foo, [[], foo, [foo]]]]]]]]]]
 ```
 
+_:boom: With its members recursively linked to each other, when
+deserializing `root`, the JVM will begin creating a recursive object
+graph. It will never complete, and consume CPU indefinitely._
+
+_:mag: If you view this as a PDF, zoom in as much as possible on the
+above code snippet to get an idea what is going on. You might want to
+look at
+[the original Markdown](01-solutions.md#exercise-83-hashset-deserialization)
+file to actually be able to read something._
+
 ---
 
-### Exercise 7.2 (Threat Boundaries)
+##### Exercise 9.1 (OWASP Benchmark)
 
-![Sample Web Application Threat Boundaries](images/01-solutions/sample_dataflow_threat-boundaries.png)
+[![OWASP Benchmark Guide](images/02-09-sdlc/benchmark_guide.png)](https://rawgit.com/OWASP/Benchmark/master/scorecard/OWASP_Benchmark_Guide.html)

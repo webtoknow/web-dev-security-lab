@@ -1,48 +1,62 @@
-# IT Security Lecture
+# Web developers security labs
 
-[![OER Commons](https://img.shields.io/badge/OER-Commons-yellowgreen)](https://www.oercommons.org/courses/university-lecture-on-it-security)
-[![AppVeyor](https://img.shields.io/appveyor/ci/bkimminich/it-security-lecture)](https://ci.appveyor.com/project/bkimminich/it-security-lecture)
-![GitHub repo size](https://img.shields.io/github/repo-size/bkimminich/it-security-lecture)
+![GitHub repo size](https://img.shields.io/github/repo-size/webtoknow/web-dev-security-lab)
+
+Web development security labs consist of lectures designed to introduce developers to the OWASP Top 10 list, which highlights the most critical security risks to web applications. During these sessions, we utilize OWASP Juice Shop, known as one of the most insecure web applications, to demonstrate these vulnerabilities. The lectures are divided into two parts: an introduction to the issues and exercises where we actively engage in hacking Juice Shop to experience these vulnerabilities firsthand.
 
 University lecture on "IT Security" as
 [Open Educational Resources](https://www.unesco.org/en/communication-information/open-solutions/open-educational-resources)
-material by [Björn Kimminich](http://kimminich.de)
+created by [Björn Kimminich](http://kimminich.de) and modified by [Bogdan Mihai Nicolae](http://bogminic.com). You can find the original material at [it-security-lecture](https://github.com/bkimminich/it-security-lecture).
 
-[![OER Global Logo, 2012 J. Mello, used under CC-BY 3.0 License](oer_logo.png)](https://www.unesco.org/en/communication-information/open-solutions/open-educational-resources
-"OER Global Logo, 2012 J. Mello, used under CC-BY 3.0 License")
+## Application Security & SDLC
 
-> 🚨 This repository is archived! There are no more updates planned at this point in time! 🚨
+1. [Open Web Application Security Project](slides/02-01-owasp.md)(OWASP)
 
-## Covered Topics
+   This lecture introduces OWASP, a nonprofit foundation focused on improving software security. It covers OWASP's core values, projects, project lifecycle, chapters, and mandatory chapter rules. The lecture also incorporates exercises to help you become acquainted with Juice Shop.
 
-### Semester 1 - Information & Network Security
+2. [Injection](slides/02-02-injection.md)
 
-1. [Motivation](slides/01-01-motivation.md) (Vulnerabilities, Exploits,
-   Threat Actors, Case Studies)
-2. [Security Goals](slides/01-02-security_goals.md) (Confidentiality,
-   Integrity, Availability)
-3. [Malware](slides/01-03-malware.md) (Viruses, Worms, Trojans, Botnets,
-   Ransomware, Cryptojackers)
-4. [Network Security](slides/01-04-network_security.md) (VPN, Wireless
-   Security, Firewalls/IDS/IPS/WAF)
-5. [Encryption](slides/01-05-encryption.md) (WEP/WPA2, SSL/TLS, PGP,
-   Disk Encryption)
-6. [Security Management & Organization](slides/01-06-security_mgmt_and_org.md)
-7. [Threat Modeling](slides/01-07-threat_modeling.md)
-8. [Penetration Testing](slides/01-08-penetration_testing.md)
+   The lecture discusses injection attacks, which involve tricking an application into executing unintended commands. It covers various types of interpreters that are vulnerable to injection attacks. The exercises involve becoming acquainted with SQL injection and bypassing authentication in Juice Shop.
 
-### Semester 2 - Application Security & SDLC
+3. [Cross-Site Scripting (XSS)](slides/02-03-xss.md)
 
-1. [Open Web Application Security Project](slides/02-01-owasp.md)
-   (OWASP)
-3. [Injection](slides/02-02-injection.md)
-2. [Cross-Site Scripting (XSS)](slides/02-03-xss.md)
+   This lecture covers Cross-Site Scripting (XSS), a common web application vulnerability. It explains the root cause, typical impacts, and provides a phishing email example. It also includes a demo of an XSS attack and discusses vulnerable code examples.
+
 4. [Authentication Flaws](slides/02-04-authentication_flaws.md)
+
+   This lecture delves into Authentication Flaws, a common security issue in web development. It discusses the importance of secure authentication, common mistakes, and potential impacts. Exercises include identifying and exploiting authentication flaws in Juice Shop.
+
 5. [Authorization Flaws](slides/02-05-authorization_flaws.md)
+
+   This lecture focuses on Authorization Flaws, a prevalent security concern in web applications. It covers the principles of secure authorization, common pitfalls, and their potential consequences. Practical exercises involve identifying and exploiting authorization flaws in the most unsecure application in the wold aka Juice Shop.
+
 6. [Cryptographic Failures](slides/02-06-cryptographic_failures.md)
+
+   This lecture explores Cryptographic Failures, a significant security risk in software development. It highlights the importance of proper encryption, common errors, and their potential effects. Hands-on exercises involve identifying and exploiting cryptographic failures in a secure environment.
+
 7. [Insecure Dependencies & Configuration](slides/02-07-insecure_dependencies_and_configuration.md)
+
+   This lecture examines Insecure Dependencies and Configuration, a critical security issue in software development. It emphasizes the need for secure dependencies and configurations, common oversights, and their potential repercussions. Exercises include identifying and exploiting these flaws in Jucei shop safe context.
+
 8. [Software & Data Integrity Failures](slides/02-08-integrity_failures.md)
+
+   This lecture investigates Integrity Failures, a serious security concern in software development. It underscores the importance of data integrity, common missteps, and their potential implications. Practical exercises involve identifying and exploiting integrity failures by hacking Juice Shop.
+
 9. [Secure Development Lifecycle](slides/02-09-sdlc.md)
+
+   This lecture discusses the Software Development Life Cycle (SDLC), a crucial process in software development. It covers the different stages of SDLC, common vulnerabilities at each stage, and their potential impacts. Exercises involve understanding and applying secure SDLC practices.
+
+## Create PDF files
+
+The `marp-team/marp-cli` is a command-line interface for Marp and Marpit Markdown. It is a powerful tool that allows you to convert your Markdown files into HTML, PDF, PPTX (PowerPoint), or images. This is particularly useful for creating presentations or documents from your Markdown files.
+
+To create a PDF from your Markdown files, you can use the following command:
+
+```bash
+npx @marp-team/marp-cli@latest
+```
+
+that is usign [`.marprc`](.marprc) configuration file.
 
 ----
 
