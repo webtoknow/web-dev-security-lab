@@ -48,14 +48,14 @@
 
 # System Requirements
 
-To perform the exercises on your private computer you need
+To perform the exercises you need
 
 * _either_ [Node.js](https://nodejs.org) (20.x or 18.x)
 * _or_ [Docker](https://www.docker.com/)
 
-_:information_source: On the university computers Node.js should already
-be available. You can verify this by running `node -v` on the command
-line. It should display a 18.x (or higher) version._
+_:information_source: On your company computer, please locate the guide detailing how to install Node.js. Once the installation process is finished, you can verify it by executing `node -v` on the command line._
+
+_:information_source: On the university computers, Node.js should already be accessible. You can confirm this by executing `node -v` on the command line._
 
 _:computer: You can always fall back to your personal laptop for the
 exercises as it should be free from virtualization, proxying or
