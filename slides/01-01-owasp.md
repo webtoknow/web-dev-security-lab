@@ -157,7 +157,27 @@ Surprisingly, there are no chapters established in Bucharest or Moldova.
 >
 > One of the difficulties of using the OWASP Top 10 as a standard is that we document appsec risks, and not necessarily easily testable issues.
 
-> Tools cannot comprehensively detect, test, or protect against the OWASP Top 10 due to the nature of several of the OWASP Top 10 risks, with reference to A04:2021-Insecure Design. OWASP discourages any claims of full coverage of the OWASP Top 10, because it’s simply untrue. 
+> Tools cannot comprehensively detect, test, or protect against the OWASP Top 10 due to the nature of several of the OWASP Top 10 risks, with reference to A04:2021-Insecure Design. OWASP discourages any claims of full coverage of the OWASP Top 10, because it’s simply untrue.
+
+---
+
+# OWASP API Security Top 10
+
+---
+
+# OWASP API Security Top 10
+
+![OWASP API Top 10 2023 risks](https://www.indusface.com/wp-content/uploads/2023/04/OWASP-API-Top-10-2023-risks.png)
+
+---
+
+# OWASP Cheat Sheet Series
+
+---
+
+# ![Flagship](images/01-01-owasp/Owasp-flagship-trans-85.png)  OWASP Cheat Sheet Series
+
+![OWASP Cheat Sheet Series](images/01-01-owasp/cheatsheet-logo.png)
 
 ---
 
@@ -340,3 +360,18 @@ Coding Challenge (where available) after solving the hacking part. The `<>`-butt
 # Exercise feedback
 
 :pray: Please consider providing feedback on individual exercises either in person or via the 👍/👎 buttons displayed for each solved hacking & coding challenge in the Juice Shop.
+
+---
+
+# Further Reading
+
+* [OWASP](https://owasp.org/)
+* [OWASP Integration Standards
+](https://owasp.org/www-project-integration-standards/)
+* [Understanding the Differences Between CVE, CWE, and NVD](https://medium.com/@King_Night/understanding-the-differences-between-cve-cwe-and-nvd-e2db34633da8#:~:text=CWE%2C%20or%20Common%20Weakness%20Enumeration,that%20can%20lead%20to%20vulnerabilities)
+* [OWASP Top 10](https://owasp.org/www-project-top-ten/)
+* [OWASP Top 10 API Security Risks – 2023
+](https://owasp.org/API-Security/editions/2023/en/0x11-t10/)
+* [What’s New in OWASP API Top 10 2023: The Latest Changes and Enhancements](https://www.indusface.com/blog/whats-new-in-owasp-api-top-10-2023/)
+* [OWASP Cheat Sheet Series](https://cheatsheetseries.owasp.org/index.html)
+* [Juice Shop](https://owasp.org/www-project-juice-shop/)
