@@ -138,13 +138,21 @@ Surprisingly, there are no chapters established in Bucharest or Moldova.
 
 # [Data Factors](https://owasp.org/Top10/A00_2021_Introduction/#data-factors)
 
+## A03:2021 – Injection
+<small><small>
+
+| <small>CWEs Mapped</small> | <small>Max Incidence Rate</small> | <small>Avg Incidence Rate</small> | <small>Avg Weighted Exploit</small> | <small>Avg Weighted Impact</small> | <small>Max Coverage</small> | <small>Avg Coverage</small> | <small>Total Occurrences</small> | <small>Total CVEs</small> |
+|:--------------------------:|:---------------------------------:|:---------------------------------:|:-----------------------------------:|:----------------------------------:|:---------------------------:|:---------------------------:|:--------------------------------:|:-------------------------:|
+|             33             |              19.09%               |               3.37%               |                7.25                 |                7.15                |           94.04%            |           47.90%            |             274,228              |          32,078           |
+
+</small></small>
+
 > * CWEs Mapped: The number of CWEs mapped to a category by the Top 10 team.
 > * Incidence Rate: Incidence rate is the percentage of applications vulnerable to that CWE from the population tested by that org for that year.
-> * Weighted Exploit: The Exploit sub-score from CVSSv2 and CVSSv3 scores assigned to CVEs mapped to CWEs, normalized, and placed on a 10pt scale.
-> * Weighted Impact: The Impact sub-score from CVSSv2 and CVSSv3 scores assigned to CVEs mapped to CWEs, normalized, and placed on a 10pt scale.
 
 ---
- 
+> * Weighted Exploit: The Exploit sub-score from CVSSv2 and CVSSv3 scores assigned to CVEs mapped to CWEs, normalized, and placed on a 10pt scale.
+> * Weighted Impact: The Impact sub-score from CVSSv2 and CVSSv3 scores assigned to CVEs mapped to CWEs, normalized, and placed on a 10pt scale.
 > * (Testing) Coverage: The percentage of applications tested by all organizations for a given CWE.
 > * Total Occurrences: Total number of applications found to have the CWEs mapped to a category.
 > * Total CVEs: Total number of CVEs in the NVD DB that were mapped to the CWEs mapped to a category.
