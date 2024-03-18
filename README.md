@@ -14,7 +14,7 @@ created by [Björn Kimminich](http://kimminich.de) and modified by [Bogdan Mihai
 
    This lecture introduces OWASP, a nonprofit foundation focused on improving software security. It covers OWASP's core values, projects, project lifecycle, chapters, and mandatory chapter rules. The lecture also incorporates exercises to help you become acquainted with Juice Shop.
 
-2. [Injection](slides/01-01-injection.md)
+2. [Injection](slides/01-02-injection.md)
 
    The lecture discusses injection attacks, which involve tricking an application into executing unintended commands. It covers various types of interpreters that are vulnerable to injection attacks. The exercises involve becoming acquainted with SQL injection and bypassing authentication in Juice Shop.
 
