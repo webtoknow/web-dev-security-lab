@@ -11,7 +11,7 @@
 ---
 # Bogdan Mihai Nicolae
 
-- Senior sotware engineer
+- Senior software engineer
 - Frontend Lead
 - Part time Lecturer at Politehnica University of Bucharest
 - Security Passionate
