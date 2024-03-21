@@ -58,6 +58,15 @@ npx @marp-team/marp-cli@latest
 
 that is usign [`.marprc`](.marprc) configuration file.
 
+## Create PPTX file
+
+Additionally, we have the capability to generate a single file, such as a PowerPoint presentation (pptx), utilizing the following command:
+
+```bash
+npx @marp-team/marp-cli@latest slides/01-02-injection.md --pptx --output 
+slides/pptx/01-02-injection.pptx --allow-local-files
+```
+
 ----
 
 [![CC BY SA 4.0](cc_by-sa_4.0.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
