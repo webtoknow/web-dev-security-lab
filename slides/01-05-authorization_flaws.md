@@ -6,7 +6,7 @@
 
 ---
 
-# [Broken Access Control](https://owasp.org/Top10/A01_2021-Broken_Access_Control/)
+# :lock_with_ink_pen: [Broken Access Control](https://owasp.org/Top10/A01_2021-Broken_Access_Control/)
 
 Access control is supposed to prevent that users can act outside of
 their intended permissions.
@@ -21,7 +21,7 @@ their intended permissions.
 
 ---
 
-##### Common Attacks
+##### :hocho: Common Attacks
 
 * Modifying URL, internal application state, or HTML page
 * Changing the primary key to another users record
@@ -45,7 +45,7 @@ to another user's data is called **Horizontal** Privilege Escalation._
 
 ---
 
-# Data Factors
+# :bar_chart: Data Factors
 
 ## A01:2021 – Broken Access Control
 
@@ -59,7 +59,7 @@ to another user's data is called **Horizontal** Privilege Escalation._
 
 ---
 
-# Exercise 5.1
+# Exercise 5.1 (:pushpin:)
 
 Assuming no access control is in place, which privilege escalations are
 possible by tampering with the following URLs?
@@ -70,7 +70,7 @@ possible by tampering with the following URLs?
 
 ---
 
-# Exercise 5.2
+# Exercise 5.2 (:pushpin:)
 
 1. Access the administration section of the store (:star::star:)
 2. View another user's shopping basket (:star::star:)
@@ -80,7 +80,7 @@ possible by tampering with the following URLs?
 
 ---
 
-# [Prevention](https://owasp.org/www-project-top-ten/OWASP_Top_Ten_2017/Top_10-2017_A5-Broken_Access_Control)
+# :hospital: [Prevention](https://owasp.org/www-project-top-ten/OWASP_Top_Ten_2017/Top_10-2017_A5-Broken_Access_Control)
 
 * **Access control** is only effective if **enforced in trusted
   server-side code**
@@ -93,6 +93,8 @@ possible by tampering with the following URLs?
 
 ---
 
+# :hospital: More [Prevention](https://owasp.org/www-project-top-ten/OWASP_Top_Ten_2017/Top_10-2017_A5-Broken_Access_Control)
+
 * **Log access control failures**, alert admins when appropriate
 * Rate limit API and controller access to minimize the harm from
   automated attack tooling
@@ -102,7 +104,7 @@ possible by tampering with the following URLs?
 
 ---
 
-## [Access Control Design Principles](https://wiki.owasp.org/images/b/bc/OWASP_Top_10_Proactive_Controls_V3.pdf)
+## :clipboard: [Access Control Design Principles](https://wiki.owasp.org/images/b/bc/OWASP_Top_10_Proactive_Controls_V3.pdf)
 
 1. Design Access Control thoroughly up front
 2. Force all Requests to go through Access Control checks
@@ -129,7 +131,7 @@ possible by tampering with the following URLs?
 
 ---
 
-# Server-Side Request Forgery
+# :arrow_right: Server-Side Request Forgery
 
 > SSRF flaws occur whenever a web application is fetching a remote resource without validating the user-supplied URL. It allows an attacker to coerce the application to send a crafted request to an unexpected destination, even when protected by a firewall, VPN, or another type of network access control list (ACL).
 >
@@ -139,7 +141,7 @@ possible by tampering with the following URLs?
 
 ---
 
-# Attack Vector Examples
+# :hocho: Attack Vector Examples
 
 > * Image on an external server (e.g. user enters image URL of their avatar for the application to download and use).
 > * Custom WebHook (users have to specify Webhook handlers or Callback URLs).
@@ -157,7 +159,7 @@ possible by tampering with the following URLs?
 
 ---
 
-# Data Factors
+# :bar_chart: Data Factors
 
 ## A10:2021 – Server-Side Request Forgery (SSRF)
 
@@ -171,9 +173,9 @@ possible by tampering with the following URLs?
 
 ---
 
-# [Prevention](https://owasp.org/Top10/A10_2021-Server-Side_Request_Forgery_%28SSRF%29/#how-to-prevent)
+# :hospital: [Prevention](https://owasp.org/Top10/A10_2021-Server-Side_Request_Forgery_%28SSRF%29/#how-to-prevent)
 
-## Network Level
+## :signal_strength: Network Level
 
 - Segmenting remote resource access functionality in separate networks
 - **Enforcing “deny by default”** firewall policies or network access
@@ -184,7 +186,7 @@ possible by tampering with the following URLs?
 
 ---
 
-## Application Level
+## :vibration_mode: Application Level
 
 -   **Sanitizing and validating all client-supplied input data**
 -   Enforcing the URL schema, port, and destination with a positive allow list
