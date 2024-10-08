@@ -5,6 +5,44 @@
 # Authorization Flaws
 
 ---
+# :closed_lock_with_key: [Authorization](https://en.wikipedia.org/wiki/Authorization)
+
+* :question: What are you allowed to do
+* :mag: Determine user permissions
+* :key: Authorization works throught settings that are implemented and maintained by the organization
+* :leftwards_arrow_with_hook: Authorization always take palce after authorization
+
+<!--
+Before diving into common flaws with authorization systems, let's first ensure we understand the basics of what authorization actually is.
+
+Authorization essentially answers the question, “What are you allowed to do?” It is the process of determining what specific actions or resources a user has permission to access after they have been authenticated.
+
+The primary goal of authorization is to ensure that users can only perform the actions and access the resources that they are permitted to, based on their role or other criteria defined by the organization.
+
+Authorization works through settings that are implemented and maintained by the organization. These settings define user permissions and access levels, which could include reading or writing files, accessing certain services, or modifying system configurations.
+
+It's important to note that authorization typically occurs after authentication. In other words, once a user’s identity is confirmed, the system then decides what that user is allowed to do within the system.
+
+-->
+---
+
+# :globe_with_meridians: Website Authorization flaw - Server Session
+
+![height:400px](images/01-05-authorization_flaws/website-authorization.jpg)
+
+<!-- _footer: Icons are form flaticon.com -->
+
+<!--
+Here's an example of an authorization flow:
+
+1. An authenticated user attempts to access a resource on a website, which could be a page, file, video, or similar content.
+2. If the website uses session-based authentication, the browser sends a cookie containing the user's information to the server.
+3. The server then checks the user's permissions for the requested resource. If the user has the appropriate access rights, they are granted access to the resource. If not, they are redirected to an error page.
+
+Now that we have a clear understanding of how authorization works, let’s explore the concept of broken access control.
+-->
+
+---
 
 # :lock_with_ink_pen: [Broken Access Control](https://owasp.org/Top10/A01_2021-Broken_Access_Control/)
 
@@ -20,7 +58,7 @@ their intended permissions.
 * Change access rights
 
 <!-- 
-Let's start with one of the most critical issues in web security today—Broken Access Control. When we talk about access control, we mean the mechanisms in place to ensure users can only perform actions or access resources that align with their assigned permissions.
+ When we talk about access control, we mean the mechanisms in place to ensure users can only perform actions or access resources that align with their assigned permissions.
 
 However, when these controls are broken or improperly implemented, users may be able to bypass them. The result? They can act outside of their intended permissions, which can lead to serious consequences.
 
@@ -52,11 +90,11 @@ to another user's data is called **Horizontal** Privilege Escalation._
 <!--
 "Now let’s talk about some common attacks related to Broken Access Control. Attackers can:
 
-Modify the URL, the internal state of the application, or HTML to access unauthorized content.
-Change the primary key in a request to view another user’s data.
-Perform Privilege Escalation attacks. For example, they can act as a user without logging in, or elevate themselves to an admin role when logged in as a regular user.
-There are two types of privilege escalation:
+- Modify the URL, the internal state of the application, or HTML to access unauthorized content.
+- Change the primary key in a request to view another user’s data.
+P- erform Privilege Escalation attacks. For example, they can act as a user without logging in, or elevate themselves to an admin role when logged in as a regular user.
 
+There are two types of privilege escalation:
 Vertical Privilege Escalation, where users gain higher access, like becoming an admin.
 Horizontal Privilege Escalation, where users access another person’s data while remaining at the same access level."
 -->
@@ -75,9 +113,9 @@ Horizontal Privilege Escalation, where users access another person’s data whil
 <!--
 Another common attack method is metadata manipulation. This involves:
 
-Replaying or tampering with access control tokens.
-Manipulating cookies or hidden fields to bypass access controls.
-Force browsing is another tactic, where an attacker directly accesses authenticated or privileged pages by guessing URLs. Attackers can also exploit APIs that lack proper security for HTTP methods like POST, PUT, and DELETE.
+- Replaying or tampering with access control tokens.
+- Manipulating cookies or hidden fields to bypass access controls.
+- Force browsing is another tactic, where an attacker directly accesses authenticated or privileged pages by guessing URLs. Attackers can also exploit APIs that lack proper security for HTTP methods like POST, PUT, and DELETE.
 -->
 ---
 
