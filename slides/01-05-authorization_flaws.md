@@ -19,6 +19,22 @@ their intended permissions.
 * Modify other users' data
 * Change access rights
 
+<!-- 
+Let's start with one of the most critical issues in web security today—Broken Access Control. When we talk about access control, we mean the mechanisms in place to ensure users can only perform actions or access resources that align with their assigned permissions.
+
+However, when these controls are broken or improperly implemented, users may be able to bypass them. The result? They can act outside of their intended permissions, which can lead to serious consequences.
+
+For example, broken access control could allow a user to:
+
+Access unauthorized functionality or data, such as viewing other users' accounts.
+They might gain access to sensitive files that should be restricted.
+Worse yet, they could modify data belonging to other users.
+In some cases, they might even escalate their privileges, allowing them to change access rights altogether.
+
+These kinds of vulnerabilities can have a huge impact, exposing companies to data breaches and reputational damage. Throughout the presentation, we'll dive deeper into how these flaws arise and, more importantly, how we can protect against them.
+-->
+
+
 ---
 
 ##### :hocho: Common Attacks
@@ -33,6 +49,18 @@ _:information_source: Obtaining a higher level of access is also
 referred to as **Vertical** Privilege Escalation while same-level access
 to another user's data is called **Horizontal** Privilege Escalation._
 
+<!--
+"Now let’s talk about some common attacks related to Broken Access Control. Attackers can:
+
+Modify the URL, the internal state of the application, or HTML to access unauthorized content.
+Change the primary key in a request to view another user’s data.
+Perform Privilege Escalation attacks. For example, they can act as a user without logging in, or elevate themselves to an admin role when logged in as a regular user.
+There are two types of privilege escalation:
+
+Vertical Privilege Escalation, where users gain higher access, like becoming an admin.
+Horizontal Privilege Escalation, where users access another person’s data while remaining at the same access level."
+-->
+
 ---
 
 * Metadata manipulation
@@ -43,6 +71,14 @@ to another user's data is called **Horizontal** Privilege Escalation._
 * Accessing API with missing access controls for `POST`, `PUT` and
   `DELETE`
 
+
+<!--
+Another common attack method is metadata manipulation. This involves:
+
+Replaying or tampering with access control tokens.
+Manipulating cookies or hidden fields to bypass access controls.
+Force browsing is another tactic, where an attacker directly accesses authenticated or privileged pages by guessing URLs. Attackers can also exploit APIs that lack proper security for HTTP methods like POST, PUT, and DELETE.
+-->
 ---
 
 # :bar_chart: Data Factors
@@ -57,6 +93,15 @@ to another user's data is called **Horizontal** Privilege Escalation._
 
 </small></small>
 
+
+<!--
+Let’s look at some data related to Broken Access Control from the OWASP Top 10. We see that:
+
+34 CWEs are linked to this vulnerability.
+The highest occurrence rate is nearly 56%, with an average rate of about 4%.
+The potential impact is high, with exploitability and impact scores both around 6.
+This shows that Broken Access Control is not only common but also highly dangerous.
+-->
 ---
 
 # Exercise 5.1 (:pushpin:)
@@ -68,6 +113,10 @@ possible by tampering with the following URLs?
 2. `http://my-universi.ty/api/students/6503/exams/view`
 3. `http://document-warehou.se/landingpage?content=index.html`
 
+
+<!--
+For our first exercise, let’s assume there is no access control in place. Given the following URLs, what types of privilege escalations can occur? How might a user manipulate these URLs to access unauthorized data?
+-->
 ---
 
 # Exercise 5.2 (:pushpin:)
@@ -77,6 +126,16 @@ possible by tampering with the following URLs?
 3. Get rid of all 5-star customer feedback (:star::star:)
 4. Post some feedback for another user but without previously logging in
    as that user (:star::star::star:)
+
+<!--
+In this next exercise, consider how you could exploit weak access controls to:
+
+Access the admin section of a store.
+View another user's shopping basket.
+Delete all 5-star customer feedback.
+Post feedback as another user without being logged in as that user.
+These scenarios will help us understand how attackers think when targeting broken access controls.
+-->
 
 ---
 
@@ -91,6 +150,17 @@ possible by tampering with the following URLs?
 * **Disable web server directory listing** and ensure file metadata and
   backup files are not present within web roots
 
+<!--
+Now, how do we prevent these issues? Access control only works if it’s enforced on the server side. Relying on client-side controls is risky because they can be easily bypassed.
+
+Key prevention measures include:
+
+Denying access by default unless specifically permitted.
+Implementing access controls once and reusing them throughout the app.
+Enforcing record ownership to make sure users can only modify their own data.
+Disabling directory listings and ensuring sensitive files are not accessible.
+-->
+
 ---
 
 # :hospital: More [Prevention](https://owasp.org/www-project-top-ten/OWASP_Top_Ten_2017/Top_10-2017_A5-Broken_Access_Control)
@@ -102,6 +172,15 @@ possible by tampering with the following URLs?
 * Developers and QA staff should include functional access control unit
   and integration tests
 
+
+<!--
+Here are more strategies to prevent access control failures:
+
+Log access control failures and alert admins as needed.
+Rate-limit API access to reduce the damage from automated attacks.
+Ensure access tokens are invalidated on the server after logout.
+Include access control tests in both development and QA processes to catch vulnerabilities early.
+-->
 ---
 
 ## :clipboard: [Access Control Design Principles](https://wiki.owasp.org/images/b/bc/OWASP_Top_10_Proactive_Controls_V3.pdf)
@@ -113,6 +192,17 @@ possible by tampering with the following URLs?
 5. Don't hardcode roles
 6. Log all Access Control events
 
+<!--
+When designing access controls, keep these principles in mind:
+
+1. Plan access control thoroughly from the start.
+2. Ensure all requests go through access control checks.
+3. Deny by default unless a user is explicitly granted access.
+4. Follow the Principle of Least Privilege, only giving users the minimum access they need.
+5. Avoid hardcoding roles.
+6. Log all access control events for monitoring and debugging.
+-->
+
 ---
 
 # Exercise 5.3 (:house:)
@@ -122,6 +212,16 @@ possible by tampering with the following URLs?
       (:star::star::star::star:)
 3. Access one or more misplaced files (:star::star::star::star: -
    :star::star::star::star::star::star:)
+
+<!--
+Our final exercise are as homework will test your understanding of broken access control. How might you:
+
+Place an order with a negative total?
+Order a special offer that was only available in 2014?
+Access misplaced files that weren’t meant to be public?
+These exercises show the types of attacks possible when access controls are not properly implemented.
+-->
+
 
 ---
 
@@ -139,6 +239,12 @@ possible by tampering with the following URLs?
 
 [^1]: https://owasp.org/Top10/A10_2021-Server-Side_Request_Forgery_%28SSRF%29/#description
 
+
+<!--
+Now, let's move on to Server-Side Request Forgery, or SSRF. This vulnerability occurs when a web application fetches a remote resource using a URL provided by the user but fails to properly validate it. In simple terms, an attacker can manipulate the URL to make the server send a crafted request to an unintended destination.
+
+The dangerous part is that this can happen even if the server is protected by firewalls, VPNs, or network access control lists. As modern applications frequently fetch external resources, the risk of SSRF has grown, especially with the rise of cloud services and more complex architectures.
+-->
 ---
 
 # :hocho: Attack Vector Examples
@@ -149,6 +255,16 @@ possible by tampering with the following URLs?
 
 [^2]: https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html#context
 
+
+<!--
+Here are some common examples of SSRF attack vectors:
+
+- Imagine an application where a user provides the URL for their avatar image, and the application downloads it. If the URL isn’t validated, an attacker could trick the server into downloading something malicious.
+- Another example is a custom webhook. A user might specify a webhook handler or callback URL, and if that’s not properly handled, it could be used for an SSRF attack.
+- Sometimes, an application sends internal requests to other services for certain functionality. If user input is sent along with these requests and isn’t sanitized, an attacker could inject malicious data.
+
+These examples show how easily SSRF can sneak into an application if proper precautions aren’t taken.
+-->
 ---
 
 # SSRF Common Flow
@@ -156,6 +272,10 @@ possible by tampering with the following URLs?
 <!-- _footer: ©Copyright 2021 - CheatSheets Series Team, used under CC-BY 3.0 -->
 
 ![©Copyright 2021 - CheatSheets Series Team, used under CC-BY 3.0](images/01-05-authorization_flaws/Server_Side_Request_Forgery_Prevention_Cheat_Sheet_SSRF_Common_Flow.png)
+
+<!--
+In this diagram, we can see the common flow of an SSRF attack. Typically, an attacker sends a specially crafted URL through the application. If the application doesn’t validate the URL correctly, the server then makes the request to the target, potentially giving the attacker access to internal systems.
+-->
 
 ---
 
@@ -171,6 +291,15 @@ possible by tampering with the following URLs?
 
 </small></small>
 
+<!--
+Now, let’s look at the data for Server-Side Request Forgery based on the OWASP Top 10:
+
+Only one CWE is mapped to SSRF.
+The highest and average incidence rates are both around 2.72%.
+However, despite the relatively low occurrence rate, SSRF has a high average weighted exploitability score of 8.28 and an impact score of 6.72.
+This shows that while SSRF may not be as common as other vulnerabilities, its potential for harm is much greater.
+-->
+
 ---
 
 # :hospital: [Prevention](https://owasp.org/Top10/A10_2021-Server-Side_Request_Forgery_%28SSRF%29/#how-to-prevent)
@@ -184,6 +313,13 @@ possible by tampering with the following URLs?
   - Logging all accepted *and* blocked network flows on firewalls
     (see [Security Logging and Monitoring Failures](02-09-sdlc.md#security-logging-and-monitoring-failures))
 
+<!--
+To prevent SSRF attacks at the network level, we can:
+
+Segment remote resource access functions into separate networks to limit exposure.
+Enforce ‘deny by default’ firewall policies, only allowing essential traffic to pass through.
+Make sure to establish proper ownership for firewall rules and log both accepted and blocked network traffic. This aligns with broader security principles around logging and monitoring.
+-->
 ---
 
 ## :vibration_mode: Application Level
@@ -195,6 +331,14 @@ possible by tampering with the following URLs?
 -   Awareness of URL consistency to avoid attacks such as DNS
     rebinding and “time of check, time of use” (TOCTOU) race conditions
 
+<!--
+At the application level, prevention measures include:
+
+Sanitizing and validating all input from the client.
+Restricting URLs, ports, and destinations to a positive allow list.
+Avoiding sending raw responses back to the client to prevent further exploitation.
+Disabling HTTP redirection and ensuring URL consistency to avoid advanced attacks like DNS rebinding or time-of-check, time-of-use (TOCTOU) race conditions.
+-->
 ---
 
 # Exercise 5.4 (_optional_ :house:)
@@ -203,3 +347,7 @@ possible by tampering with the following URLs?
 2. ...to request a hidden resource on server through server (:star::star::star::star::star::star:)
 
 _:information_source: For this to count as an SSRF attack you need to make the Juice Shop server attacks itself._  
+
+<!--
+Finally, in this exercise, you'll have the chance to experiment with SSRF by reversing a juicy malware and using it to request a hidden resource on the server. To count as an SSRF attack, your goal is to trick the Juice Shop server into attacking itself.
+-->
