@@ -159,10 +159,11 @@ For our first exercise, let’s assume there is no access control in place. Give
 
 # Exercise 5.2 (:pushpin:)
 
-1. Access the administration section of the store (:star::star:)
-2. View another user's shopping basket (:star::star:)
-3. Get rid of all 5-star customer feedback (:star::star:)
-4. Post some feedback for another user but without previously logging in
+1. Log in with the administrator’s user account (:star::star:)
+2. Access the administration section of the store (:star::star:)
+3. View another user's shopping basket (:star::star:)
+4. Get rid of all 5-star customer feedback (:star::star:)
+5. Post some feedback for another user but without previously logging in
    as that user (:star::star::star:)
 
 <!--
