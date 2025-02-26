@@ -154,6 +154,9 @@ possible by tampering with the following URLs?
 
 <!--
 For our first exercise, let’s assume there is no access control in place. Given the following URLs, what types of privilege escalations can occur? How might a user manipulate these URLs to access unauthorized data?
+1. Query Parameter id is likely sequential or predictable - Insecure Direct Object Reference (IDOR)
+2. Path Parameter id is likely sequential or predictable - Insecure Direct Object Reference (IDOR)
+3. The content parameter suggests dynamic file inclusion. Use directory traversal (?content=../../../../etc/passwd) to read unauthorized files - Insecure File Inclusion
 -->
 ---
 
