@@ -12,7 +12,6 @@
 # Bogdan Mihai Nicolae
 
 - Senior software engineer
-- Frontend Lead
 - Part time Lecturer at Politehnica University of Bucharest
 - Security Passionate
 - Educator and trainer
